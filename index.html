@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oi Gabe 😺</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    button {
+      font-size: 1.5rem;
+      padding: 10px 20px;
+      margin-top: 20px;
+      background-color: #ff6f61;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s, background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #ff8a75;
+      transform: scale(1.1);
+    }
+
+    .cats {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: -1;
+    }
+
+    .cat {
+      position: absolute;
+      font-size: 2rem;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-800px) scale(0.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Oi Gabe! 💌</h1>
+    <p>Clique no botão, tenho algo pra te dizer! 😺</p>
+    <button onclick="showMessage()">Clique aqui</button>
+  </div>
+
+  <div class="cats" id="cats"></div>
+
+  <script>
+    function showMessage() {
+      const container = document.querySelector('.container');
+      container.innerHTML = '<h1>Te adoro mil Googols! 😻</h1><p>Você é demais! 🐾</p>';
+
+      // Adiciona animação de emojis de gatos
+      const catsContainer = document.getElementById('cats');
+      const emojis = ['😺', '😻', '🐱', '😸', '🐾'];
+
+      for (let i = 0; i < 20; i++) {
+        const cat = document.createElement('div');
+        cat.classList.add('cat');
+        cat.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        cat.style.left = Math.random() * 100 + 'vw';
+        cat.style.animationDuration = Math.random() * 2 + 3 + 's';
+        catsContainer.appendChild(cat);
+
+        // Remove o emoji após a animação
+        cat.addEventListener('animationend', () => cat.remove());
+      }
+    }
+  </script>
+</body>
+</html>
